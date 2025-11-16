@@ -22,6 +22,9 @@
    - Press `F5` in VSCode to launch Extension Development Host
    - Look for "Bridge: Stopped" in the bottom-right status bar
    - Click it to open the popup menu and start the bridge
+   - Optional: pick **🛠️ Initiate Project** to scaffold `package.json` + `.env`, copy `main-panel/`, push `.vscode/mcp.json`, and auto-start the Node server powering the main panel
+   - The generated `main-panel` server now serves static assets from `main-panel/public/` and refreshes `/config.json` on each request, so `.env` tweaks (API key, ports) take effect immediately.
+   - Curious about which VS Code commands you can call? Choose **📜 Search VS Code Commands** (or run the same command from the palette) to filter them interactively and copy the IDs.
 
 4. **Test External API**
    ```powershell
@@ -61,11 +64,13 @@ vscode-bridge-connector/
 └── SETUP.md                 # This file
 ```
 
-## 🔧 **New in v0.0.2:**
-- ✅ Fixed CommonJS compatibility in example-usage.js
-- ✅ Added test-client-package.json for easier testing
-- ✅ Cleaner project structure
-- ✅ Better Node.js compatibility
+## 🔧 **New in v0.0.3:**
+- 🌐 Embedded Main Panel webview plus auto-started local Node server when running Initiate Project
+- 🛠️ Initiate Project now copies `.vscode/mcp.json`, `main-panel/`, and restarts the panel server with log streaming
+- 🧾 `.env.example` expanded with `BRIDGE_PORT`, `MAIN_PANEL_PORT`, and updated defaults for panel URLs
+- 🧹 Menu hides Initiate Project once `.env` + `package.json` exist, reducing clutter
+
+_See `CHANGELOG.md` for previous releases._
 
 ## 🔧 Configuration
 
@@ -73,6 +78,12 @@ Access via Command Palette → "Preferences: Open Settings (UI)" → Search "Bri
 
 - **Port**: Change the HTTP server port (default: 8282)
 - **Enable**: Auto-start bridge when VSCode opens
+
+## 📜 Command Explorer
+
+- Launch via the status-bar menu entry **📜 Search VS Code Commands** or via Command Palette → `Bridge Connector: Search VS Code Commands`.
+- Enter any substring (for example `workbench.action.chat`) and the extension will call `vscode.commands.getCommands(true)` and filter the results locally.
+- Pick a command from the QuickPick list to copy the ID to your clipboard—handy for crafting `/command` payloads or spotting the exact identifier exposed by another extension.
 
 ## 🧪 Testing Commands
 
@@ -90,6 +101,15 @@ Try these VSCode commands through the API:
 
 // Format document
 { command: "editor.action.formatDocument" }
+
+// Scaffold project assets from templates
+{ command: "bridgeConnector.initiateProject" }
+```
+
+To restart the generated main panel server manually:
+
+```shell
+npm run panel
 ```
 
 ## 📦 Publishing

@@ -2,7 +2,7 @@
   "name": "vscode-bridge-connector",
   "displayName": "VSCode Bridge Connector 🔌🌉",
   "publisher": "1WAYTO",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": {
     "name": "Eric Lee",
     "email": "hello@1wayto.com"
@@ -72,6 +72,11 @@
         "command": "bridgeConnector.openSettings",
         "title": "Open Bridge Connector Settings",
         "category": "Bridge Connector"
+      },
+      {
+        "command": "bridgeConnector.searchCommands",
+        "title": "Search VS Code Commands",
+        "category": "Bridge Connector"
       }
     ]
   },
@@ -80,15 +85,13 @@
     "build": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "npm run build",
-    "test": "node ./out/test/runTest.js"
+    "test": "node -e \"console.log('No automated tests yet – add tests under src/test when ready.');\""
   },
-  "dependencies": {
-    "dotenv": "^16.6.1",
-    "node-fetch": "^2.7.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/node": "^16.x",
     "@types/vscode": "^1.60.0",
+    "dotenv": "^16.6.1",
     "typescript": "^4.9.4"
   }
 }

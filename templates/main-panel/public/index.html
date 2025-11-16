@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bridge Main Panel</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">Bridge Connector</p>
+        <h1 id="panelTitle">Main Panel</h1>
+        <p class="lede">
+          Use this panel to trigger bridge commands or expose any custom workflow you need while building your agent.
+        </p>
+      </header>
+      <section class="card">
+        <div>
+          <h2>Say hi in Copilot Chat</h2>
+          <p>Click the button to invoke <code>workbench.action.chat.open</code> with a "hi" query.</p>
+        </div>
+        <button id="hiButton">Send "hi"</button>
+      </section>
+      <section class="status">
+        <p id="status">Idle</p>
+      </section>
+      <section>
+        <h2>Event log</h2>
+        <pre id="log" aria-live="polite"></pre>
+      </section>
+    </main>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>

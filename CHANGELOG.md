@@ -2,6 +2,25 @@
 
 All notable changes to the "VSCode Bridge Connector" extension will be documented in this file.
 
+## [0.0.3] - 2025-11-15
+
+### Added
+- **Command Explorer**: New `Bridge Connector: Search VS Code Commands` command + menu item that fetches every registered command via `vscode.commands.getCommands(true)`, filters them, and copies the selected ID to the clipboard.
+- **Embedded Main Panel Webview**: The main panel now opens inside VS Code using a reusable webview tab instead of launching an external browser.
+- **Project Scaffolding Enhancements**: `Bridge Connector: Initiate Project` now copies `.vscode/mcp.json`, mirrors `templates/main-panel/`, and auto-starts `node main-panel/main-panel-server.js` with logs streamed to the "Bridge Main Panel" output channel.
+- **Main Panel Template**: Added a welcome UI with a "Say hi" button that triggers `workbench.action.chat.open` via the bridge, plus default env values (`BRIDGE_PORT`, `MAIN_PANEL_PORT`, improved `MAIN_PANEL_URL`).
+
+### Changed
+- **Main Panel Server**: Static assets now live in `main-panel/public/`, `/config.json` re-reads `.env` on every request, and the default POST payload now includes `query`, `mode`, and `model` so Copilot Chat receives richer context.
+- **Docs & Examples**: README/SETUP updated to highlight the command explorer, static panel workflow, and Node 18+ built-in `fetch` usage (with guidance for older runtimes). Unused runtime dependencies were removed from the extension package, and `npm test` now reports that automated tests are pending instead of failing.
+- **QuickPick Menu**: Initiate Project entry is hidden once both `.env` and `package.json` exist to reduce clutter; menu always refreshes `.env`-driven panel settings before rendering.
+- **Open Main Panel Action**: Both the QuickPick item and dedicated command now reuse the same webview helper for consistent behavior.
+
+### Fixed
+- **Command Validation**: `/command` returns `400 Bad Request` for malformed JSON or payload shapes instead of `500`, and message dialog helpers now forward every argument (buttons, modal options, etc.). Mixed or non-array `args` payloads are normalized automatically.
+- **Command Consistency**: Main panel button now targets `workbench.action.chat.open`, matching the API example and ensuring chat opens reliably.
+
+
 ## [0.0.2] - 2025-07-24
 
 ### Added

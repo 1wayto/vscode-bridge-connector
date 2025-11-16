@@ -1,0 +1,109 @@
+:root {
+  color-scheme: light dark;
+  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 32px;
+  background: #0f111a;
+  color: #f4f4f4;
+  min-height: 100vh;
+}
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+header {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+}
+
+header .eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  margin: 0 0 8px;
+  color: #9ca3af;
+}
+
+header h1 {
+  margin: 0 0 12px;
+  font-size: 2.5rem;
+}
+
+header .lede {
+  margin: 0;
+  color: #d1d5db;
+  line-height: 1.5;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.card h2 {
+  margin: 0 0 8px;
+}
+
+.card p {
+  margin: 0;
+  color: #d1d5db;
+}
+
+button {
+  padding: 12px 28px;
+  font-size: 1rem;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: #007acc;
+  color: #fff;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+button:hover {
+  background: #3399ff;
+  transform: translateY(-1px);
+}
+
+.status {
+  padding: 16px 24px;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.35);
+  font-weight: 600;
+}
+
+pre {
+  margin: 0;
+  background: rgba(0, 0, 0, 0.45);
+  padding: 16px;
+  border-radius: 12px;
+  min-height: 160px;
+  max-height: 280px;
+  overflow: auto;
+  font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+}
+
+code {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 6px;
+  border-radius: 6px;
+}

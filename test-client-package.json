@@ -6,7 +6,8 @@
   "type": "commonjs",
   "scripts": {
     "test": "node example-usage.js",
-    "test-modern": "node example-usage-modern.mjs"
+    "test-modern": "node example-usage-modern.mjs",
+    "panel": "node main-panel/main-panel-server.js"
   },
   "dependencies": {
     "node-fetch": "^2.7.0",
